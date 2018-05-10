@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using TestAspnetcorewebapplication1.Configurations;
+using TestAspnetcorewebapplication1.Quickstart;
 
 namespace TestAspnetcorewebapplication1
 {
@@ -32,7 +33,7 @@ namespace TestAspnetcorewebapplication1
             builder.UseSqlServer(connectionString, sqlOptions =>
                                 sqlOptions.MigrationsAssembly(migrationAssembly)));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDBContext>();
 
             services.AddIdentityServer()
@@ -48,7 +49,7 @@ namespace TestAspnetcorewebapplication1
                     //.AddInMemoryIdentityResources(Configurations.Resources.GetIdentityResources())
                     //.AddInMemoryApiResources(Configurations.Resources.GetApiResources())
                     //.AddTestUsers(Users.GetTestUsers())
-                    .AddAspNetIdentity<IdentityUser>()
+                    .AddAspNetIdentity<ApplicationUser>()
                     .AddDeveloperSigningCredential();
 
 
